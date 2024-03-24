@@ -40,7 +40,7 @@ export default function ImageSearch() {
           </div>
         )}
       />
-      <div ref={ref} className='h-10'></div>
+      <div ref={ref} className='h-[10vh] mt-[-120vh]'></div>
     </div>
   );
 }
