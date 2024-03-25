@@ -24,19 +24,17 @@ export default function ImageSearch() {
           gap: [6, 6, 6],
           media: [640, 768, 1024],
         }}
-        render={(hit: any, idx) => (
-          <div
-            key={hit.document.image_name + idx}
-            onClick={() => console.log(hit)}
-          >
+        render={({ document }: any) => (
+          <div key={document.id} onClick={() => console.log(document)}>
             <Image
-              src={`/part-1-2-2m/${hit.document.image_name}`}
+              src={`/part-1-2-2m/${document.id}`}
               width={0}
               height={0}
               sizes='20vw'
               style={{ width: '100%', height: 'auto' }}
-              alt={hit.document.prompt}
+              alt={document.prompt}
             />
+            <span>{document.prompt}</span>
           </div>
         )}
       />

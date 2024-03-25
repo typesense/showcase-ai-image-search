@@ -39,7 +39,7 @@ import diffusionDB4 from './data/diffusiondb-part-000002-with-base64-images-2.js
     name: 'DiffusionDB',
     fields: [
       {
-        name: 'image_name',
+        name: 'id',
         type: 'string',
       },
       {
