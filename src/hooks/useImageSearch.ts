@@ -1,24 +1,23 @@
 import { typesense } from '@/lib/typesense';
+import { useImageSearchParams } from '@/types/useImageSearch';
 import { random } from '@/utils/random';
 import { useEffect, useState } from 'react';
-import { SearchParams } from 'typesense/lib/Typesense/Documents';
 
 let randomPage = random(0, 80);
-let searchParameters: SearchParams = {
-  q: '*',
-  per_page: 25,
-};
 
-export default function useImageSearch() {
+export default function useImageSearch({
+  enableRandomPage,
+  ...searchParameters
+}: useImageSearchParams) {
   const [hits, setHits] = useState<any>([]);
 
   useEffect(() => {
+    if (!enableRandomPage) randomPage = 0;
     nextPage();
-    console.log('fired');
   }, []);
 
   const nextPage = async () => {
-    if (randomPage >= 80) randomPage = -1;
+    if (randomPage >= 80 && enableRandomPage) randomPage = 0;
     randomPage++;
     try {
       const res = await typesense

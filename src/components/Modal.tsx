@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const SAMPLER = {
   1: 'ddim',
@@ -36,6 +37,7 @@ export default function Modal({ data, handleClose }: any) {
           <p>{data.step}</p>
           <span>Sampler</span>
           <p>{SAMPLER[data.sampler]}</p>
+          <Link href={`/${data.id}`}>Explore similar style</Link>
         </div>
       </div>
       <div
