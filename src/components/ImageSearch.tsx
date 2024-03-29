@@ -29,14 +29,14 @@ export default function ImageSearch({
           items={hits}
           config={{
             columns: [2, 4, 6],
-            gap: [6, 6, 6],
+            gap: [3, 3, 3],
             media: [640, 768, 1024],
           }}
           render={({ document }: any) => {
             document.prompt = capitalizeFirstLetter(document.prompt);
             return (
               <li
-                className='group relative cursor-pointer list-none overflow-hidden rounded-sm'
+                className='animate-fadeIn group relative cursor-pointer list-none overflow-hidden rounded-sm'
                 onClick={() => setActiveHit(document)}
                 key={document.id}
               >
@@ -48,8 +48,8 @@ export default function ImageSearch({
                   style={{ width: '100%', height: 'auto' }}
                   alt={document.prompt}
                 />
-                <div className='absolute inset-0 flex items-end bg-gradient-to-b  from-[#fff0] to-black px-1 py-2 opacity-0 transition group-hover:opacity-100'>
-                  <span className='line-clamp-3 text-xs'>
+                <div className='absolute inset-0 flex items-end bg-gradient-to-b  from-[#fff0] to-[black] p-2 opacity-0 transition group-hover:opacity-100'>
+                  <span className='line-clamp-3 text-xs font-medium'>
                     {document.prompt}
                   </span>
                 </div>

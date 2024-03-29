@@ -4,10 +4,15 @@ export default function Home() {
   return (
     <main className='flex flex-col gap-32 py-10'>
       <div>
-        <h1 className='m-auto w-max text-7xl font-medium'>
+        <h1 className='m-auto mb-2 w-max text-6xl font-medium'>
           Diffusion Database Search
         </h1>
-        <h2 className='m-auto w-max text-3xl'>powered by TYPESENSE</h2>
+        <h2 className='m-auto w-max text-xl'>
+          powered by{' '}
+          <span className='text-2xl text-[#d90368]'>
+            type<b>sense|</b>
+          </span>
+        </h2>
       </div>
 
       <ImageSearch
