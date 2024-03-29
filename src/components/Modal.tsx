@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ChevronRight } from './icons';
 
 const SAMPLER = {
   1: 'ddim',
@@ -16,8 +17,8 @@ const SAMPLER = {
 export default function Modal({ data, handleClose }: any) {
   return (
     <section className='fixed inset-0 grid place-items-center'>
-      <div className='relative z-10 flex h-[90vh] w-[80vw] gap-10 rounded-xl bg-gray-950'>
-        <div className='relative flex h-full w-[70%] rounded-xl bg-black p-4'>
+      <div className='bg-dark-900 relative z-10 flex h-[90vh] w-[80vw] gap-10 rounded-xl'>
+        <div className='bg-dark-950 relative flex h-full w-[70%] rounded-xl p-4'>
           <Image
             className='flex-1 object-contain'
             src={`/part-1-2-2m/${data.id}`}
@@ -27,7 +28,7 @@ export default function Modal({ data, handleClose }: any) {
             alt={data.prompt}
           />
         </div>
-        <div className='flex flex-1 flex-col gap-8 py-8 pr-5 [&_p]:font-mono [&_p]:text-xs [&_span]:mb-2 [&_span]:block [&_span]:text-xs [&_span]:font-semibold'>
+        <div className='[&_span]:text-white-300 flex flex-1 flex-col gap-8 py-8 pr-5 [&_p]:font-mono [&_p]:text-sm [&_span]:mb-2 [&_span]:block [&_span]:text-xs [&_span]:font-bold'>
           <div>
             <span>PROMPT</span>
             <p>{data.prompt}</p>
@@ -50,7 +51,12 @@ export default function Modal({ data, handleClose }: any) {
               <p>{SAMPLER[data.sampler]}</p>
             </div>
           </div>
-          <Link href={`/${data.id}`}>Explore similar style</Link>
+          <Link
+            href={`/${data.id}`}
+            className='text-accent bg-accent border-accent flex w-max items-center rounded-lg border-[1px] border-opacity-50 bg-opacity-25 px-3 py-[.35rem] text-sm'
+          >
+            Explore similar style <ChevronRight className='ml-1' />
+          </Link>
         </div>
       </div>
       <div
