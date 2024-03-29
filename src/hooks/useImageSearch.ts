@@ -3,6 +3,7 @@ import { useImageSearchParams } from '@/types/useImageSearch';
 import { random } from '@/utils/random';
 import { useEffect, useState } from 'react';
 
+// simulate randomness
 let randomPage = random(0, 80);
 
 export default function useImageSearch({
