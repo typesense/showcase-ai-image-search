@@ -1,41 +1,36 @@
 import { typesense } from '@/lib/typesense';
-import { useImageSearchParams } from '@/types/useImageSearch';
-import { random } from '@/utils/random';
 import { useEffect, useState } from 'react';
 import { SearchParams } from 'typesense/lib/Typesense/Documents';
 
-// simulate randomness
-let randomPage = random(0, 80);
+let page = 0;
 
-export default function useImageSearch({
-  enableRandomPage,
-  ...searchParameters
-}: useImageSearchParams) {
-  const [page, setPage] = useState(enableRandomPage ? randomPage : 1);
+export default function useImageSearch(searchParameters: SearchParams) {
   const [hits, setHits] = useState<any>([]);
   const [searchBoxParams, setSearchBoxParams] = useState<SearchParams | null>(
     null,
   );
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    nextPage();
+    fetchNextPage();
   }, []);
 
-  const nextPage = async (customSearchParams?: SearchParams | null) => {
+  const fetchNextPage = async () => {
+    setIsFetching(true);
+    page++;
     try {
       const res = await typesense
         .collections('DiffusionDB')
         .documents()
         .search({
-          ...(customSearchParams || searchParameters),
+          ...(searchBoxParams || searchParameters),
           page,
         });
-      console.log(res);
-      setPage((prev) => (prev > 79 && enableRandomPage ? 1 : prev + 1));
-
       setHits((prev: any) => [...prev, ...(res.hits || [])]);
     } catch (error) {
       alert('Sorry, there is an error fetching data!');
+    } finally {
+      setIsFetching(false);
     }
   };
 
@@ -45,9 +40,10 @@ export default function useImageSearch({
   useEffect(() => {
     if (!searchBoxParams?.q) return;
     setHits([]);
-    setPage(0);
-    nextPage(searchBoxParams);
+    page = 0;
+
+    fetchNextPage();
   }, [searchBoxParams?.q]);
 
-  return { hits, nextPage, search };
+  return { hits, fetchNextPage, search, isFetching };
 }
