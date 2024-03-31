@@ -16,9 +16,9 @@ const SAMPLER = {
 
 export default function Modal({ data, handleClose }: any) {
   return (
-    <section className='fixed inset-0 grid place-items-center'>
-      <div className='bg-dark-900 relative z-10 flex h-[90vh] w-[80vw] gap-10 rounded-xl'>
-        <div className='bg-dark-950 relative flex h-full w-[70%] rounded-xl p-4'>
+    <section className='fixed inset-0 z-20 grid place-items-center'>
+      <div className='relative z-30 flex h-[90vh] w-[80vw] gap-10 rounded-xl bg-dark-900'>
+        <div className='relative flex h-full w-[70%] rounded-xl bg-dark-950 p-4'>
           <Image
             className='flex-1 object-contain'
             src={`/part-1-2-2m/${data.id}`}
@@ -28,7 +28,7 @@ export default function Modal({ data, handleClose }: any) {
             alt={data.prompt}
           />
         </div>
-        <div className='[&_span]:text-white-300 flex flex-1 flex-col gap-8 py-8 pr-5 [&_p]:font-mono [&_p]:text-sm [&_span]:mb-2 [&_span]:block [&_span]:text-xs [&_span]:font-bold'>
+        <div className='flex flex-1 flex-col gap-8 py-8 pr-5 [&_p]:font-mono [&_p]:text-sm [&_span]:mb-2 [&_span]:block [&_span]:text-xs [&_span]:font-bold [&_span]:text-white-300'>
           <div>
             <span>PROMPT</span>
             <p>{data.prompt}</p>
@@ -53,14 +53,14 @@ export default function Modal({ data, handleClose }: any) {
           </div>
           <Link
             href={`/${data.id}`}
-            className='text-accent bg-accent border-accent flex w-max items-center rounded-lg border-[1px] border-opacity-50 bg-opacity-25 px-3 py-[.35rem] text-sm'
+            className='flex w-max items-center rounded-lg border-[1px] border-accent border-opacity-50 bg-accent bg-opacity-25 px-3 py-[.35rem] text-sm text-accent'
           >
             Explore similar style <ChevronRight className='ml-1' />
           </Link>
         </div>
       </div>
       <div
-        className='fixed inset-0 z-0 bg-slate-950 opacity-70'
+        className='fixed inset-0 z-20 bg-[black] opacity-70'
         onClick={handleClose}
       ></div>
     </section>

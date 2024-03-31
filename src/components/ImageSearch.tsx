@@ -1,79 +1,55 @@
 'use client';
 import useImageSearch from '@/hooks/useImageSearch';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-
-import { Masonry } from 'react-plock';
 import Modal from './Modal';
-import { useImageSearchParams } from '@/types/useImageSearch';
-import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter';
+
+import { SearchParams } from 'typesense/lib/Typesense/Documents';
+import InfiniteHits from './InfiniteHits';
 
 export default function ImageSearch({
   searchParameters,
 }: {
-  searchParameters: useImageSearchParams;
+  searchParameters: SearchParams;
 }) {
-  const { hits, nextPage, search } = useImageSearch(searchParameters);
+  const [query, setQuery] = useState('');
+
+  const { hits, fetchNextPage, search, isFetching } =
+    useImageSearch(searchParameters);
   const { ref, inView } = useInView({ threshold: 0.001 });
   const [activeHit, setActiveHit] = useState(null);
-  const [query, setQuery] = useState('');
 
   useEffect(() => {
     if (!inView) return;
-    nextPage(query ? { q: query, query_by: 'embedding' } : null);
+    fetchNextPage();
   }, [inView]);
 
   useEffect(() => {
-    search({ q: query, query_by: 'embedding' });
+    query &&
+      search({
+        q: query,
+        query_by: 'embedding',
+        per_page: searchParameters.per_page,
+      });
   }, [query]);
 
   return (
     <>
-      <section>
+      <section className='flex flex-col items-center gap-20'>
         <input
-          className='border border-accent bg-dark-900'
+          className='sticky left-0 right-0 top-1 z-10 m-auto h-12 w-[max(50vw,300px)] rounded-xl bg-[#232526] px-6 py-2 shadow-2xl shadow-[black] placeholder:opacity-50'
           type='text'
+          placeholder='Search for images...'
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
 
         <div className='min-h-[120vh] w-full overflow-hidden rounded-xl'>
-          <Masonry
-            className='min-h-screen'
-            items={hits}
-            config={{
-              columns: [2, 4, 6],
-              gap: [3, 3, 3],
-              media: [640, 768, 1024],
-            }}
-            render={({ document }: any) => {
-              document.prompt = capitalizeFirstLetter(document.prompt);
-              return (
-                <li
-                  className='group relative animate-fadeIn cursor-pointer list-none overflow-hidden rounded-sm'
-                  onClick={() => setActiveHit(document)}
-                  key={document.id}
-                >
-                  <Image
-                    src={`/part-1-2-2m/${document.id}`}
-                    width={0}
-                    height={0}
-                    sizes='20vw'
-                    style={{ width: '100%', height: 'auto' }}
-                    alt={document.prompt}
-                  />
-                  <div className='absolute inset-0 flex items-end bg-gradient-to-b  from-[#fff0] to-[black] p-2 opacity-0 transition group-hover:opacity-100'>
-                    <span className='line-clamp-3 text-xs font-medium'>
-                      {document.prompt}
-                    </span>
-                  </div>
-                </li>
-              );
-            }}
-          />
+          <InfiniteHits hits={hits} setActiveHit={setActiveHit} />
         </div>
-        <div ref={ref} className='pointer-events-none mt-[-5vmax]'></div>
+        <div ref={ref} className='pointer-events-none mt-[-5vmax]'>
+          {isFetching && 'loading'}
+        </div>
       </section>
 
       {activeHit && (

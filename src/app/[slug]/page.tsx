@@ -6,8 +6,10 @@ export default function ExploreSimilarStylePage({
   params: { slug: string };
 }) {
   return (
-    <main className="flex flex-col gap-32 py-10">
-      <h1 className="m-auto w-max text-7xl font-medium">Explore</h1>
+    <>
+      <h1 className='m-auto w-max text-7xl font-medium'>
+        <span className='text-accent'>_</span>Explore
+      </h1>
       <ImageSearch
         searchParameters={{
           q: '*',
@@ -15,6 +17,6 @@ export default function ExploreSimilarStylePage({
           vector_query: `embedding:([], id:${params.slug})`,
         }}
       />
-    </main>
+    </>
   );
 }
