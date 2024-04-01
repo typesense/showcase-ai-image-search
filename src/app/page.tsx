@@ -1,6 +1,10 @@
+'use client';
 import ImageSearch from '@/components/ImageSearch';
+import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get('q') || '*';
   return (
     <>
       <div>
@@ -17,9 +21,11 @@ export default function Home() {
 
       <ImageSearch
         searchParameters={{
-          q: '*',
+          q: query,
+          query_by: 'embedding',
           per_page: 25,
         }}
+        key={query}
       />
     </>
   );
