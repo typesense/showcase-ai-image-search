@@ -17,6 +17,9 @@
     text-wrap: balance;
   }
 }
+html {
+  scrollbar-gutter: stable both-edges;
+}
 body {
   @apply bg-dark-900 text-white-200;
 }
