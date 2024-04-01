@@ -41,7 +41,7 @@ export default function ImageSearch({
           }}
         >
           <input
-            className='m-auto h-12 w-[max(50vw,300px)] rounded-xl border-accent border-opacity-40 bg-[#232526] px-6 py-2 shadow-2xl shadow-[black] placeholder:opacity-50 focus:border-2 focus:outline-none'
+            className='border-dark-500 bg-dark-500 m-auto h-12 w-[max(50vw,300px)] rounded-xl border-2 px-6 py-2 shadow-2xl shadow-[black] placeholder:opacity-50 focus:border-accent focus:border-opacity-40 focus:outline-none'
             type='text'
             placeholder='Search for images...'
             value={query}
@@ -52,8 +52,8 @@ export default function ImageSearch({
         <div className='min-h-[120vh] w-full overflow-hidden rounded-xl'>
           <InfiniteHits hits={hits} setActiveHit={setActiveHit} />
         </div>
-        <div ref={ref} className='pointer-events-none mt-[-5vmax]'>
-          {isFetching && 'loading'}
+        <div ref={ref} className='pointer-events-none mt-[-5vmax] font-mono'>
+          {isFetching && 'Loading...'}
         </div>
       </section>
 
