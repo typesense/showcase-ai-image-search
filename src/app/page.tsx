@@ -13,9 +13,14 @@ export default function Home() {
         </h1>
         <h2 className='m-auto w-max text-lg'>
           powered by{' '}
-          <span className='text-xl text-[#d90368]'>
+          <a
+            href='https://typesense.org/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-xl text-[#d90368]'
+          >
             type<b>sense|</b>
-          </span>
+          </a>
         </h2>
       </div>
 
