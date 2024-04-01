@@ -53,7 +53,7 @@ export default function Modal({ data, handleClose }: any) {
           </div>
           <Link
             href={`/${data.id}`}
-            className='flex w-max items-center rounded-lg border-[1px] border-accent border-opacity-50 bg-accent bg-opacity-25 px-3 py-[.35rem] text-sm text-accent'
+            className='flex w-max items-center rounded-lg border-[1px] border-accent border-opacity-40 bg-accent bg-opacity-20 px-3 py-[.35rem] text-sm text-accent'
           >
             Explore similar style <ChevronRight className='ml-1' />
           </Link>
