@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <div>
         <h1 className='m-auto mb-2 w-max text-5xl font-medium'>
-          Diffusion Database Search
+          <span className='text-accent'>_</span>Diffusion Database Search.
         </h1>
         <h2 className='m-auto w-max text-lg'>
           powered by{' '}
