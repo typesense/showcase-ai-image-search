@@ -6,7 +6,7 @@ import Modal from './Modal';
 
 import { SearchParams } from 'typesense/lib/Typesense/Documents';
 import InfiniteHits from './InfiniteHits';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function ImageSearch({
   searchParameters,
@@ -14,8 +14,9 @@ export default function ImageSearch({
   searchParameters: SearchParams;
 }) {
   const router = useRouter();
-  const { q } = searchParameters;
-  const [query, setQuery] = useState(q && q !== '*' ? q : '');
+  const searchParams = useSearchParams();
+  const q = searchParams.get('q') || '';
+  const [query, setQuery] = useState(q);
 
   const { hits, fetchNextPage, isFetching } = useImageSearch(searchParameters);
   const { ref, inView } = useInView({ threshold: 0.001 });
