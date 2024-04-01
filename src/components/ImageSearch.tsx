@@ -30,7 +30,6 @@ export default function ImageSearch({
   useEffect(() => {
     document.body.style.overflowY = activeHit ? 'hidden' : 'auto';
   }, [activeHit]);
-
   return (
     <>
       <section className='flex flex-col items-center gap-20'>
@@ -42,7 +41,7 @@ export default function ImageSearch({
           }}
         >
           <input
-            className='m-auto h-12 w-[max(50vw,300px)] rounded-xl bg-[#232526] px-6 py-2 shadow-2xl shadow-[black] placeholder:opacity-50'
+            className='m-auto h-12 w-[max(50vw,300px)] rounded-xl border-accent border-opacity-40 bg-[#232526] px-6 py-2 shadow-2xl shadow-[black] placeholder:opacity-50 focus:border-2 focus:outline-none'
             type='text'
             placeholder='Search for images...'
             value={query}
