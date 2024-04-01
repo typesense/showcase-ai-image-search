@@ -1,14 +1,11 @@
 import { typesense } from '@/lib/typesense';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SearchParams } from 'typesense/lib/Typesense/Documents';
 
-let page = 0;
-
 export default function useImageSearch(searchParameters: SearchParams) {
+  const page = useRef(0);
   const [hits, setHits] = useState<any>([]);
-  const [searchBoxParams, setSearchBoxParams] = useState<SearchParams | null>(
-    null,
-  );
+
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
@@ -17,15 +14,17 @@ export default function useImageSearch(searchParameters: SearchParams) {
 
   const fetchNextPage = async () => {
     setIsFetching(true);
-    page++;
+    page.current++;
     try {
       const res = await typesense
         .collections('DiffusionDB')
         .documents()
         .search({
-          ...(searchBoxParams || searchParameters),
-          page,
+          ...searchParameters,
+          page: page.current,
         });
+      console.log(res);
+
       setHits((prev: any) => [...prev, ...(res.hits || [])]);
     } catch (error) {
       alert('Sorry, there is an error fetching data!');
@@ -34,16 +33,5 @@ export default function useImageSearch(searchParameters: SearchParams) {
     }
   };
 
-  const search = (searchParams: SearchParams) =>
-    setSearchBoxParams(searchParams);
-
-  useEffect(() => {
-    if (!searchBoxParams?.q) return;
-    setHits([]);
-    page = 0;
-
-    fetchNextPage();
-  }, [searchBoxParams?.q]);
-
-  return { hits, fetchNextPage, search, isFetching };
+  return { hits, fetchNextPage, isFetching };
 }
