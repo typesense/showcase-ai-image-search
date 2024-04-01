@@ -21,12 +21,12 @@ const config: Config = {
     },
     colors: {
       current: 'currentColor',
-      accent: '#7FC8F8',
+      accent: '#4db8ff',
       'dark-900': '#0A0B0B',
       'dark-950': '#060606',
       'white-100': '#F9F9F9',
       'white-200': '#F5F5F5',
-      'white-300': '#748181',
+      'white-300': '#707d83',
     },
     // that is animation class
     animation: {
