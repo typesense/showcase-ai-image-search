@@ -22,6 +22,7 @@ const config: Config = {
     colors: {
       current: 'currentColor',
       accent: '#d90368',
+      'dark-500': '#232526',
       'dark-900': '#0A0B0B',
       'dark-950': '#060606',
       'white-100': '#F9F9F9',
