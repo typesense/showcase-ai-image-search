@@ -33,6 +33,9 @@ export default function ImageSearch({
       });
   }, [query]);
 
+  useEffect(() => {
+    document.body.style.overflowY = activeHit ? 'hidden' : 'auto';
+  }, [activeHit]);
   return (
     <>
       <section className='flex flex-col items-center gap-20'>
