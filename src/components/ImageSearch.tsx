@@ -18,12 +18,13 @@ export default function ImageSearch({
   const q = searchParams.get('q') || '';
   const [query, setQuery] = useState(q);
 
-  const { hits, fetchNextPage, isFetching } = useImageSearch(searchParameters);
+  const { hits, fetchNextPage, isFetching, isLastPage } =
+    useImageSearch(searchParameters);
   const { ref, inView } = useInView({ threshold: 0.001 });
   const [activeHit, setActiveHit] = useState(null);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || isLastPage) return;
     fetchNextPage();
   }, [inView]);
 
@@ -52,6 +53,7 @@ export default function ImageSearch({
         <div className='min-h-[120vh] w-full overflow-hidden rounded-xl'>
           <InfiniteHits hits={hits} setActiveHit={setActiveHit} />
         </div>
+        {isLastPage && <div className='font-mono'>That's all!</div>}
         <div ref={ref} className='pointer-events-none mt-[-5vmax] font-mono'>
           {isFetching && 'Loading...'}
         </div>

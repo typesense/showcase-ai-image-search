@@ -5,8 +5,8 @@ import { SearchParams } from 'typesense/lib/Typesense/Documents';
 export default function useImageSearch(searchParameters: SearchParams) {
   const page = useRef(0);
   const [hits, setHits] = useState<any>([]);
-
   const [isFetching, setIsFetching] = useState(false);
+  const [isLastPage, setIsLastPage] = useState(false);
 
   useEffect(() => {
     fetchNextPage();
@@ -23,8 +23,7 @@ export default function useImageSearch(searchParameters: SearchParams) {
           ...searchParameters,
           page: page.current,
         });
-      console.log(res);
-
+      setIsLastPage(res.found === res.out_of);
       setHits((prev: any) => [...prev, ...(res.hits || [])]);
     } catch (error) {
       alert('Sorry, there is an error fetching data!');
@@ -33,5 +32,5 @@ export default function useImageSearch(searchParameters: SearchParams) {
     }
   };
 
-  return { hits, fetchNextPage, isFetching };
+  return { hits, fetchNextPage, isFetching, isLastPage };
 }
