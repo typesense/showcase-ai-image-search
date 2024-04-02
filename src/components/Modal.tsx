@@ -21,7 +21,7 @@ export default function Modal({ data, handleClose }: any) {
         <div className='relative flex h-full w-[70%] rounded-xl bg-dark-950 p-4'>
           <Image
             className='flex-1 object-contain'
-            src={`/part-1-2-2m/${data.id}`}
+            src={`/diffusiondb-images/${data.id}`}
             width={0}
             height={0}
             sizes='80vw'
@@ -60,7 +60,7 @@ export default function Modal({ data, handleClose }: any) {
         </div>
       </div>
       <div
-        className='fixed inset-0 z-20 bg-[black] opacity-70'
+        className='fixed inset-0 z-20 cursor-pointer bg-[black] opacity-70'
         onClick={handleClose}
       ></div>
     </section>
