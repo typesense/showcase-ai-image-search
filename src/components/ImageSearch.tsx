@@ -37,11 +37,11 @@ export default function ImageSearch({
           className='sticky left-0 right-0 top-1 z-10'
           onSubmit={(e) => {
             e.preventDefault();
-            router.push(`/?q=${query}`, { scroll: false });
+            router.push(`/?q=${query}`);
           }}
         >
           <input
-            className='border-dark-500 bg-dark-500 m-auto h-12 w-[max(50vw,300px)] rounded-xl border-2 px-6 py-2 shadow-2xl shadow-[black] placeholder:opacity-50 focus:border-accent focus:border-opacity-40 focus:outline-none'
+            className='m-auto h-12 w-[max(50vw,300px)] rounded-xl border-2 border-dark-500 bg-dark-500 px-6 py-2 shadow-2xl shadow-[black] placeholder:opacity-50 focus:border-accent focus:border-opacity-40 focus:outline-none'
             type='text'
             placeholder='Search for images...'
             value={query}

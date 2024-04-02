@@ -1,9 +1,8 @@
 import Typesense from 'typesense';
 import 'dotenv/config';
-import diffusionDB1 from './data/diffusiondb-part-000001-with-base64-images-1.json';
-import diffusionDB2 from './data/diffusiondb-part-000001-with-base64-images-2.json';
-import diffusionDB3 from './data/diffusiondb-part-000002-with-base64-images-1.json';
-import diffusionDB4 from './data/diffusiondb-part-000002-with-base64-images-2.json';
+import diffusionDB1 from './data/diffusiondb-part-1-to-5-with-base64-images-1.json';
+import diffusionDB2 from './data/diffusiondb-part-1-to-5-with-base64-images-2.json';
+import diffusionDB3 from './data/diffusiondb-part-1-to-5-with-base64-images-3.json';
 
 (async () => {
   console.log('Connecting to typesense server...');
@@ -83,31 +82,27 @@ import diffusionDB4 from './data/diffusiondb-part-000002-with-base64-images-2.js
   console.log('Populating collection...');
 
   const indexData = async (data: any) => {
-    try {
-      const returnData = await typesense
-        .collections('DiffusionDB')
-        .documents()
-        .import(data);
+    const returnData = await typesense
+      .collections('DiffusionDB')
+      .documents()
+      .import(data);
 
-      console.log('Return data: ', returnData);
-    } catch (err) {
-      console.error(err);
-    }
+    console.log('Return data: ', returnData);
   };
 
-  console.log('Indexing diffusionDB part 000001 - 1');
+  try {
+    console.log('Indexing diffusionDB part-1-to-5 - 1');
 
-  await indexData(diffusionDB1);
+    await indexData(diffusionDB1);
 
-  console.log('Indexing diffusionDB part 000001 - 2');
+    console.log('Indexing diffusionDB part-1-to-5 - 2');
 
-  await indexData(diffusionDB2);
+    await indexData(diffusionDB2);
 
-  console.log('Indexing diffusionDB part 000002 - 1');
+    console.log('Indexing diffusionDB part-1-to-5 - 3');
 
-  await indexData(diffusionDB3);
-
-  console.log('Indexing diffusionDB part 000002 - 2');
-
-  await indexData(diffusionDB4);
+    await indexData(diffusionDB3);
+  } catch (error) {
+    console.log(error);
+  }
 })();

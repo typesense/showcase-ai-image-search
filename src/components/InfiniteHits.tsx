@@ -21,7 +21,7 @@ export default function InfiniteHits({ hits, setActiveHit }: any) {
             key={document.id + idx}
           >
             <Image
-              src={`/part-1-2-2m/${document.id}`}
+              src={`/diffusiondb-images/${document.id}`}
               width={0}
               height={0}
               sizes='20vw'

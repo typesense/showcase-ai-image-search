@@ -4,6 +4,7 @@
 
 :root {
   --fadeIn: fadeIn 1.25s ease-out forwards;
+  color-scheme: dark;
 }
 
 * {
