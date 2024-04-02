@@ -18,6 +18,7 @@ export default function InfiniteHits({ hits, setActiveHit }: any) {
           <li
             className='group relative animate-fadeIn cursor-pointer list-none overflow-hidden rounded-sm'
             onClick={() => setActiveHit(document)}
+            // react-plock sometimes render one item multiple times
             key={document.id + idx}
           >
             <Image
