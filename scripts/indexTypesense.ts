@@ -1,8 +1,8 @@
 import Typesense from 'typesense';
 import 'dotenv/config';
-import diffusionDB1 from './data/diffusiondb-part-1-to-5-with-base64-images-1.json';
-import diffusionDB2 from './data/diffusiondb-part-1-to-5-with-base64-images-2.json';
-import diffusionDB3 from './data/diffusiondb-part-1-to-5-with-base64-images-3.json';
+// import diffusionDB1 from './data/diffusiondb-part-1-to-5-with-base64-images-1.json';
+// import diffusionDB2 from './data/diffusiondb-part-1-to-5-with-base64-images-2.json';
+import diffusionDB from './data/20-images.json';
 
 (async () => {
   console.log('Connecting to typesense server...');
@@ -91,17 +91,17 @@ import diffusionDB3 from './data/diffusiondb-part-1-to-5-with-base64-images-3.js
   };
 
   try {
-    console.log('Indexing diffusionDB part-1-to-5 - 1');
+    // console.log('Indexing diffusionDB part-1-to-5 - 1');
 
-    await indexData(diffusionDB1);
+    // await indexData(diffusionDB1);
 
-    console.log('Indexing diffusionDB part-1-to-5 - 2');
+    // console.log('Indexing diffusionDB part-1-to-5 - 2');
 
-    await indexData(diffusionDB2);
+    // await indexData(diffusionDB2);
 
-    console.log('Indexing diffusionDB part-1-to-5 - 3');
+    console.log('Indexing diffusionDB test 20 images');
 
-    await indexData(diffusionDB3);
+    await indexData(diffusionDB);
   } catch (error) {
     console.log(error);
   }
