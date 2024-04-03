@@ -22,7 +22,7 @@ export default function InfiniteHits({ hits, setActiveHit }: any) {
             key={document.id + idx}
           >
             <Image
-              src={`/diffusiondb-images/${document.id}`}
+              src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/${document.id}`}
               width={0}
               height={0}
               sizes='20vw'

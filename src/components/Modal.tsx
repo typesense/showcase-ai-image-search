@@ -21,7 +21,7 @@ export default function Modal({ data, handleClose }: any) {
         <div className='relative flex h-full w-[70%] rounded-xl bg-dark-950 p-4'>
           <Image
             className='flex-1 object-contain'
-            src={`/diffusiondb-images/${data.id}`}
+            src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/${data.id}`}
             width={0}
             height={0}
             sizes='80vw'
