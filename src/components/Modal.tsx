@@ -17,8 +17,8 @@ const SAMPLER = {
 export default function Modal({ data, handleClose }: any) {
   return (
     <section className='fixed inset-0 z-20 grid place-items-center'>
-      <div className='relative z-30 flex h-[90vh] w-[80vw] gap-10 rounded-xl bg-dark-900'>
-        <div className='relative flex h-full w-[70%] rounded-xl bg-dark-950 p-4'>
+      <div className='relative z-30 flex h-[90vh] w-[80vw] gap-5 overflow-y-auto rounded-xl bg-dark-900 max-lg:w-[100vw] max-lg:flex-col'>
+        <div className='relative flex h-1 w-[70%] rounded-xl bg-dark-950 p-4 max-lg:w-full max-lg:flex-1 max-lg:p-2 lg:h-full'>
           <Image
             className='flex-1 object-contain'
             src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/${data.id}`}
@@ -28,7 +28,7 @@ export default function Modal({ data, handleClose }: any) {
             alt={data.prompt}
           />
         </div>
-        <div className='flex flex-1 flex-col gap-8 py-8 pr-5 [&_p]:font-mono [&_p]:text-sm [&_span]:mb-2 [&_span]:block [&_span]:text-xs [&_span]:font-bold [&_span]:text-white-300'>
+        <div className='flex h-max flex-col gap-8 px-5 py-8 lg:flex-1 [&_p]:font-mono [&_p]:text-sm [&_span]:mb-2 [&_span]:block [&_span]:text-xs [&_span]:font-bold [&_span]:text-white-300'>
           <div>
             <span>PROMPT</span>
             <p>{data.prompt}</p>
@@ -48,7 +48,7 @@ export default function Modal({ data, handleClose }: any) {
             </div>
             <div>
               <span>SAMPLER</span>
-              <p>{SAMPLER[data.sampler]}</p>
+              <p>{SAMPLER[data.sampler as keyof typeof SAMPLER]}</p>
             </div>
           </div>
           <Link

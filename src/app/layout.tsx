@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${inter.variable} ${robotoMono.variable}`}>
-        <main className='flex flex-col gap-10 px-10 py-10 font-sans'>
+        <main className='flex flex-col gap-[2vh] px-[4vw] py-10 font-sans'>
           {children}
         </main>
       </body>

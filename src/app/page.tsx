@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <div>
-        <h1 className='m-auto mb-2 w-max text-5xl font-medium'>
+        <h1 className='m-auto w-max text-5xl font-medium'>
           <span className='text-accent'>_</span>Diffusion Database Search.
         </h1>
         <h2 className='m-auto w-max text-lg'>
