@@ -7,10 +7,7 @@ export default function ExploreSimilarStylePage({
 }) {
   return (
     <>
-      <h1 className='m-auto w-max text-5xl font-medium'>
-        <span className='text-accent'>_</span>
-        Explore.
-      </h1>
+      <h1 className='m-auto w-max text-5xl font-medium'>Explore</h1>
       <ImageSearch
         searchParameters={{
           q: '*',

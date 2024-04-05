@@ -22,19 +22,8 @@ export default function Home() {
     <>
       <div>
         <h1 className='m-auto w-max text-5xl font-medium'>
-          <span className='text-accent'>_</span>Diffusion Database Search.
+          DiffusionDB Search
         </h1>
-        <h2 className='m-auto w-max text-lg'>
-          powered by{' '}
-          <a
-            href='https://typesense.org/'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='text-xl text-[#d90368]'
-          >
-            type<b>sense|</b>
-          </a>
-        </h2>
       </div>
 
       <ImageSearch
