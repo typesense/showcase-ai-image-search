@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>
+ 🤖 AI Image Search, powered by Typesense
+</h1>
+This is a demo that showcase Typesense's Image Search feature which includes:
 
-## Getting Started
+<br />
 
-First, run the development server:
+- Search images using text descriptions of their contents
+- Image Similarity search
+
+## Tech Stack
+
+- <a href="https://github.com/typesense/typesense" target="_blank">Typesense</a>
+- NextJS
+- Typescript
+- Tailwind
+
+The data contains 1265 best images out of the first 5000 image-prompt pairs which were taken from <a href="https://github.com/poloclub/diffusiondb" target="_blank">DiffusionDB</a> and then filtered based on aesthetics using <a href="https://github.com/kenjiqq/aesthetics-scorer" target="_blank">aesthetics-scorer</a>.
+
+## Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── scripts/
+│   ├── data/
+│   │   └── 20-images.json
+│   └── indexTypesense.ts # script that index data from 20-images.json into typesense server
+└── src/
+    ├── app/
+    │   ├── [slug]/
+    │   │   └── page.tsx # explore similar style (search similar images with image)
+    │   └── page.tsx # search images using text descriptions
+    ├── components/
+    │   └── UI components...
+    ├── hooks/
+    │   └── useImageSearch.ts
+    └── lib/
+        └── typesense.ts # typesense client config
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To run this project locally, make sure you have docker and nodejs, install dependencies and start the dev server:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Installation
 
-## Learn More
+```shell
+git clone https://github.com/typesense/showcase-ai-image-search.git
 
-To learn more about Next.js, take a look at the following resources:
+cd showcase-ai-image-search
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+npm i
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Start typesense server
 
-## Deploy on Vercel
+```shell
+npm run start:typesense # or: docker compose up
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Index data into typesense
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```shell
+npm run index:typesense
+```
+
+Start the dev server
+
+```shell
+npm run dev
+```
+
+Open http://localhost:3000 to see the app ✌️
+
+## Deployment
+
+Set env variables to point the app to the Typesense Cluster
+
+```env
+NEXT_PUBLIC_TYPESENSE_SEARCH_ONLY_API_KEY=xxx
+NEXT_PUBLIC_TYPESENSE_HOST=xxx.typesense.net
+NEXT_PUBLIC_TYPESENSE_PORT=443
+NEXT_PUBLIC_TYPESENSE_PROTOCOL=https
+NEXT_PUBLIC_IMAGE_BASE_URL=...
+```
