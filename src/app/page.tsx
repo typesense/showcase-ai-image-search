@@ -1,23 +1,12 @@
-'use client';
-import ImageSearch from '@/components/ImageSearch';
-import { random } from '@/utils/random';
-import { useSearchParams } from 'next/navigation';
-const popularKeywords = [
-  'dog',
-  'cat',
-  'tree',
-  'fire',
-  'ice',
-  'robot',
-  'people',
-  'ocean',
-  'orange',
-];
-const idx = random(0, popularKeywords.length - 1);
+import type { Metadata } from 'next';
+import ImageSearchUsingTextDescriptions from '@/components/ImageSearchUsingTextDescriptions';
+
+export const metadata: Metadata = {
+  title: 'AI Image Search | Typesense',
+  description: 'Search for images using text descriptions of their content.',
+};
 
 export default function Home() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get('q') || popularKeywords[idx];
   return (
     <>
       <div>
@@ -25,15 +14,7 @@ export default function Home() {
           DiffusionDB Search
         </h1>
       </div>
-
-      <ImageSearch
-        searchParameters={{
-          q: query,
-          query_by: 'embedding',
-          per_page: 25,
-        }}
-        key={query}
-      />
+      <ImageSearchUsingTextDescriptions />
     </>
   );
 }

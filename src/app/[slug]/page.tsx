@@ -1,5 +1,11 @@
 import ImageSearch from '@/components/ImageSearch';
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Explore | Typesense',
+  description:
+    "Explore similar style, using Typesense's image similarity search.",
+};
 export default function ExploreSimilarStylePage({
   params,
 }: {
