@@ -8,9 +8,9 @@ export default function InfiniteHits({ hits, setActiveHit }: any) {
       className='min-h-screen'
       items={hits}
       config={{
-        columns: [2, 4, 6],
-        gap: [3, 3, 3],
-        media: [640, 768, 1024],
+        columns: [2, 4, 5, 6],
+        gap: [3, 3, 3, 3],
+        media: [640, 800, 900, 1024],
       }}
       render={({ document }: any, idx) => {
         document.prompt = capitalizeFirstLetter(document.prompt);
