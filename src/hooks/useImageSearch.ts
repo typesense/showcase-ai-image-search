@@ -23,7 +23,7 @@ export default function useImageSearch(searchParameters: SearchParams) {
           ...searchParameters,
           page: page.current,
         });
-      setIsLastPage(res.found === res.out_of);
+      setIsLastPage(res.hits?.length ? false : true);
       setHits((prev: any) => [...prev, ...(res.hits || [])]);
     } catch (error) {
       alert('Sorry, there is an error fetching data!');

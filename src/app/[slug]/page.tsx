@@ -19,6 +19,7 @@ export default function ExploreSimilarStylePage({
           q: '*',
           per_page: 25,
           vector_query: `embedding:([], id:${params.slug})`,
+          exclude_fields: ['embedding', 'out_of'], // reduce ~98.5% of bytes transferred over network
         }}
       />
     </>

@@ -26,6 +26,7 @@ export default function ImageSearchUsingTextDescriptions() {
         q: query,
         query_by: 'embedding',
         per_page: 25,
+        exclude_fields: ['embedding', 'out_of'], // reduce ~98.5% of bytes transferred over network
       }}
       key={query}
     />
