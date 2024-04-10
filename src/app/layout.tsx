@@ -40,6 +40,7 @@ export default function RootLayout({
             target='_blank'
             rel='noopener noreferrer'
             id='typesense'
+            title='Source code'
           >
             <GithubIcon className='size-6' />
           </a>
