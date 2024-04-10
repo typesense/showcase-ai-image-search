@@ -1,7 +1,5 @@
 import Typesense from 'typesense';
 import 'dotenv/config';
-// import diffusionDB1 from './data/diffusiondb-part-1-to-5-with-base64-images-1.json';
-// import diffusionDB2 from './data/diffusiondb-part-1-to-5-with-base64-images-2.json';
 import diffusionDB from './data/20-images.json';
 
 (async () => {
@@ -37,10 +35,6 @@ import diffusionDB from './data/20-images.json';
   await typesense.collections().create({
     name: 'DiffusionDB',
     fields: [
-      {
-        name: 'id',
-        type: 'string',
-      },
       {
         name: 'prompt',
         type: 'string',
@@ -79,30 +73,19 @@ import diffusionDB from './data/20-images.json';
     ],
   });
 
-  console.log('Populating collection...');
+  console.log('Indexing diffusionDB test 20 images');
+  await indexData(diffusionDB);
 
-  const indexData = async (data: any) => {
-    const returnData = await typesense
-      .collections('DiffusionDB')
-      .documents()
-      .import(data);
+  async function indexData(data: any) {
+    try {
+      const returnData = await typesense
+        .collections('DiffusionDB')
+        .documents()
+        .import(data);
 
-    console.log('Return data: ', returnData);
-  };
-
-  try {
-    // console.log('Indexing diffusionDB part-1-to-5 - 1');
-
-    // await indexData(diffusionDB1);
-
-    // console.log('Indexing diffusionDB part-1-to-5 - 2');
-
-    // await indexData(diffusionDB2);
-
-    console.log('Indexing diffusionDB test 20 images');
-
-    await indexData(diffusionDB);
-  } catch (error) {
-    console.log(error);
+      console.log('Return data: ', returnData);
+    } catch (error) {
+      console.log(error);
+    }
   }
 })();
