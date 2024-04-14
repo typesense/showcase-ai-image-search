@@ -28,6 +28,7 @@ const config: Config = {
       'white-100': '#F9F9F9',
       'white-200': '#F5F5F5',
       'white-300': '#8d7883',
+      'white-400': '#A1A1A1',
     },
     fontSize: {
       xs: ['var(--step--2)', '1rem'],
