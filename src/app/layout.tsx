@@ -26,15 +26,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${robotoMono.variable} px-[4vw] font-sans`}
       >
-        <header className='flex items-center justify-between py-[4vh]'>
-          <a
-            href='https://typesense.org/'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='text-base text-accent'
-          >
-            type<b>sense|</b>
-          </a>
+        <header className='flex items-center justify-end py-[4vh]'>
           <a
             href='https://github.com/typesense/showcase-ai-image-search'
             target='_blank'
@@ -45,7 +37,7 @@ export default function RootLayout({
             <GithubIcon className='size-6' />
           </a>
         </header>
-        <main className='flex flex-col gap-[2vh] py-10 '>{children}</main>
+        <main className='flex flex-col gap-[6vmax] py-10 '>{children}</main>
       </body>
     </html>
   );

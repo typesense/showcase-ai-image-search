@@ -6,18 +6,12 @@ import Modal from './Modal';
 
 import { SearchParams } from 'typesense/lib/Typesense/Documents';
 import InfiniteHits from './InfiniteHits';
-import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function ImageSearch({
   searchParameters,
 }: {
   searchParameters: SearchParams;
 }) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const q = searchParams.get('q') || '';
-  const [query, setQuery] = useState(q);
-
   const { hits, fetchNextPage, isFetching, isLastPage } =
     useImageSearch(searchParameters);
   const { ref, inView } = useInView({ threshold: 0.001 });
@@ -35,22 +29,6 @@ export default function ImageSearch({
   return (
     <>
       <section className='flex flex-col items-center gap-20'>
-        <form
-          className='sticky left-0 right-0 top-1 z-10'
-          onSubmit={(e) => {
-            e.preventDefault();
-            router.push(`/?q=${query}`);
-          }}
-        >
-          <input
-            className=' m-auto h-[5vmax] max-h-12 w-[max(50vw,350px)] max-w-[95vw] rounded-xl border-2 border-dark-500 bg-dark-500 px-6 py-2 text-sm shadow-2xl shadow-[black] placeholder:opacity-50 focus:border-accent focus:border-opacity-40 focus:outline-none'
-            type='text'
-            placeholder='Search for images...'
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </form>
-
         <div className='min-h-[120vh] w-full overflow-hidden rounded-xl'>
           <InfiniteHits hits={hits} setActiveHit={setActiveHit} />
         </div>

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import ImageSearchUsingTextDescriptions from '@/components/ImageSearchUsingTextDescriptions';
+import SearchBox from '@/components/SearchBox';
+import Heading from '@/components/Heading';
 
 export const metadata: Metadata = {
   title: 'AI Image Search | Typesense',
@@ -10,9 +12,8 @@ export default function Home() {
   return (
     <>
       <div>
-        <h1 className='m-auto w-max text-5xl font-medium'>
-          DiffusionDB Search
-        </h1>
+        <Heading />
+        <SearchBox />
       </div>
       <ImageSearchUsingTextDescriptions />
     </>
