@@ -14,7 +14,7 @@ export default function Home() {
       <div className='mb-6'>
         <Heading />
       </div>
-      <SearchBox />
+      <SearchBox showExampleSearchTerms />
       <div className='mt-[6vmax]'>
         <ImageSearchUsingTextDescriptions />
       </div>
