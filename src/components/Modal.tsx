@@ -1,62 +1,50 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronRight } from './icons';
+import { _documentSchema } from '@/types/typesenseResponse';
+import { SAMPLER } from '@/utils/CONSTANTS';
 
-const SAMPLER = {
-  1: 'ddim',
-  2: 'plms',
-  3: 'k_euler',
-  4: 'k_euler_ancestral',
-  5: 'k_heun',
-  6: 'k_dpm_2',
-  7: 'k_dpm_2_ancestral',
-  8: 'k_lms',
-  9: 'others',
+type _props = {
+  imageData: _documentSchema;
+  handleClose: () => void;
 };
-
-export default function Modal({ data, handleClose }: any) {
+export default function Modal({ imageData, handleClose }: _props) {
   return (
-    <section className='fixed inset-0 z-20 grid place-items-center'>
+    <section className='fixed inset-0 z-20 grid animate-[fadeIn_0.1s_ease-out_forwards] place-items-center'>
       <div className='relative z-30 flex h-[90vh] w-[80vw] gap-5 overflow-y-auto rounded-xl bg-dark-900 max-lg:w-[100vw] max-lg:flex-col'>
         <div className='relative flex h-1 w-[70%] rounded-xl bg-dark-950 p-4 max-lg:w-full max-lg:flex-1 max-lg:p-2 lg:h-full'>
           <Image
             className='flex-1 object-contain'
-            src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? '/diffusiondb-20-images'}/${data.id}`}
+            src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? '/diffusiondb-20-images'}/${imageData.id}`}
             width={0}
             height={0}
             sizes='80vw'
-            alt={data.prompt}
+            alt={imageData.prompt}
           />
         </div>
         <div className='flex h-max flex-col gap-8 px-5 py-8 lg:flex-1 [&_p]:font-mono [&_p]:text-sm [&_span]:mb-2 [&_span]:block [&_span]:text-xs [&_span]:font-bold [&_span]:text-white-300'>
           <div>
             <span>PROMPT</span>
-            <p>{data.prompt}</p>
+            <p>{imageData.prompt}</p>
           </div>
           <div className='grid grid-cols-2 gap-5'>
             <div>
               <span>SEED</span>
-              <p>{data.seed}</p>
+              <p>{imageData.seed}</p>
             </div>
             <div>
               <span>CFG SCALE</span>
-              <p>{data.cfg}</p>
+              <p>{imageData.cfg}</p>
             </div>
             <div>
               <span>STEPS</span>
-              <p>{data.step}</p>
+              <p>{imageData.step}</p>
             </div>
             <div>
               <span>SAMPLER</span>
-              <p>{SAMPLER[data.sampler as keyof typeof SAMPLER]}</p>
+              <p>{SAMPLER[imageData.sampler as keyof typeof SAMPLER]}</p>
             </div>
           </div>
-          <Link
-            href={`/${data.id}`}
-            className='flex w-max items-center rounded-lg border-[1px] border-accent border-opacity-40 bg-accent bg-opacity-20 px-3 py-[.35rem] text-sm text-accent'
-          >
-            Explore similar style <ChevronRight className='ml-1' />
-          </Link>
         </div>
       </div>
       <div

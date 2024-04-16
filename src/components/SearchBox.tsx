@@ -2,7 +2,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-const keywords = ['Autumn', 'House', 'Fox', 'Dog', 'Cat', 'Sea', 'Robot'];
+import { EXAMPLE_SEARCH_TERMS } from '@/utils/CONSTANTS';
 
 export default function SearchBox({
   showExampleSearchTerms,
@@ -21,7 +21,7 @@ export default function SearchBox({
   return (
     <>
       <form
-        className='sticky left-0 right-0 top-1 z-10 mb-2 flex flex-col items-center'
+        className='sticky left-0 right-0 top-1 z-10 flex flex-col items-center'
         onSubmit={(e) => {
           e.preventDefault();
           router.push(`/?q=${query}`);
@@ -36,9 +36,9 @@ export default function SearchBox({
         />
       </form>
       {showExampleSearchTerms && (
-        <ul className='m-auto flex w-[max(50vw,350px)] max-w-[95vw] gap-1 font-mono text-xs text-white-400'>
+        <ul className='m-auto mt-2 flex w-[max(50vw,350px)] max-w-[95vw] gap-1 overflow-x-auto font-mono text-xs text-white-400'>
           <span>Try:</span>{' '}
-          {keywords.map((item, idx) => (
+          {EXAMPLE_SEARCH_TERMS.map((item, idx) => (
             <Link
               className='group'
               href={`/?q=${item}`}
@@ -48,7 +48,7 @@ export default function SearchBox({
               <span className='underline underline-offset-2 transition duration-200 group-hover:text-white-300'>
                 {item}
               </span>
-              {idx < keywords.length - 1 && ','}
+              {idx < EXAMPLE_SEARCH_TERMS.length - 1 && ','}
             </Link>
           ))}
         </ul>

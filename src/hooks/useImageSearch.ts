@@ -1,4 +1,5 @@
 import { typesense } from '@/lib/typesense';
+import { _hit } from '@/types/typesenseResponse';
 import { useEffect, useRef, useState } from 'react';
 import { SearchParams } from 'typesense/lib/Typesense/Documents';
 
@@ -24,7 +25,7 @@ export default function useImageSearch(searchParameters: SearchParams) {
           page: page.current,
         });
       setIsLastPage(res.hits?.length ? false : true);
-      setHits((prev: any) => [...prev, ...(res.hits || [])]);
+      setHits((prev: _hit[]) => [...prev, ...(res.hits || [])]);
     } catch (error) {
       alert('Sorry, there is an error fetching data!');
     } finally {

@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --fadeIn: fadeIn 1.25s ease-out forwards;
   color-scheme: dark;
   /* @link https://utopia.fyi/type/calculator?c=320,14,1.125,1240,18,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
@@ -33,13 +32,4 @@ html {
 }
 body {
   @apply bg-dark-900 text-white-200;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }

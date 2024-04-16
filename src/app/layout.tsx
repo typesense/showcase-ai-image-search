@@ -37,7 +37,7 @@ export default function RootLayout({
             <GithubIcon className='size-6' />
           </a>
         </header>
-        <main className='flex flex-col py-10'>{children}</main>
+        <main className='flex flex-col'>{children}</main>
       </body>
     </html>
   );

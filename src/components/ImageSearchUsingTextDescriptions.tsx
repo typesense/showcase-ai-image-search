@@ -1,25 +1,15 @@
-// Basically a wrapper to use 'use client' directive
+// Thís file is a wrapper to use 'use client' directive
 'use client';
 import { random } from '@/utils/random';
 import { useSearchParams } from 'next/navigation';
 import ImageSearch from '@/components/ImageSearch';
+import { POPULAR_KEYWORDS } from '@/utils/CONSTANTS';
 
-const popularKeywords = [
-  'dog',
-  'cat',
-  'tree',
-  'fire',
-  'ice',
-  'robot',
-  'people',
-  'ocean',
-  'orange',
-];
-const idx = random(0, popularKeywords.length - 1);
+const idx = random(0, POPULAR_KEYWORDS.length - 1);
 
 export default function ImageSearchUsingTextDescriptions() {
   const searchParams = useSearchParams();
-  const query = searchParams.get('q') || popularKeywords[idx];
+  const query = searchParams.get('q') || POPULAR_KEYWORDS[idx];
   return (
     <ImageSearch
       searchParameters={{

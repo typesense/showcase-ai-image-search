@@ -40,8 +40,15 @@ const config: Config = {
       '4xl': 'var(--step-4)',
       '5xl': 'var(--step-5)',
     },
-    animation: {
-      fadeIn: 'var(--fadeIn)',
+    keyframes: {
+      fadeIn: {
+        '0%': {
+          opacity: '0',
+        },
+        '100%': {
+          opacity: '1',
+        },
+      },
     },
   },
   plugins: [],
