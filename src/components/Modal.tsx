@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { ChevronRight } from './icons';
 import { _documentSchema } from '@/types/typesenseResponse';
 import { SAMPLER } from '@/utils/CONSTANTS';
 
@@ -8,6 +6,9 @@ type _props = {
   imageData: _documentSchema;
   handleClose: () => void;
 };
+/*
+ * This component render a modal that display image prompt data
+ */
 export default function Modal({ imageData, handleClose }: _props) {
   return (
     <section className='fixed inset-0 z-20 grid animate-[fadeIn_0.1s_ease-out_forwards] place-items-center'>

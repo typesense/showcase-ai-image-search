@@ -8,10 +8,13 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Explore | Typesense',
   description:
-    "Explore similar style, using Typesense's image similarity search.",
+    "Explore similar images, using Typesense's image similarity search.",
 };
 
-export default async function ExploreSimilarStylePage({
+/*
+ * This fetch the data from typesense server using dynamic page `slug` and pass it to `ImageSimilaritySearch` component
+ */
+export default async function ExploreSimilarImagesPage({
   params,
 }: {
   params: { slug: string };

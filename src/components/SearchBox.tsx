@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { EXAMPLE_SEARCH_TERMS } from '@/utils/CONSTANTS';
 
+/*
+ * This component contain a search box and a form that when submitted will push the route to /?q={searchBoxValue}
+ */
 export default function SearchBox({
   showExampleSearchTerms,
 }: {

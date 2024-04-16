@@ -4,6 +4,9 @@ import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter';
 import Link from 'next/link';
 import { _hit } from '@/types/typesenseResponse';
 
+/*
+ * This component render a masonry layout of hits returned by typesense
+ */
 export default function InfiniteHits({ hits }: { hits: _hit[] }) {
   return (
     <Masonry

@@ -3,6 +3,9 @@ import { _hit } from '@/types/typesenseResponse';
 import { useEffect, useRef, useState } from 'react';
 import { SearchParams } from 'typesense/lib/Typesense/Documents';
 
+/*
+ * Search logic for <ImageSearch/>
+ */
 export default function useImageSearch(searchParameters: SearchParams) {
   const page = useRef(0);
   const [hits, setHits] = useState<any>([]);

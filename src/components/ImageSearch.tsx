@@ -2,10 +2,12 @@
 import useImageSearch from '@/hooks/useImageSearch';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-
 import { SearchParams } from 'typesense/lib/Typesense/Documents';
 import InfiniteHits from './InfiniteHits';
 
+/*
+ * This component make queries to typesense using the props `searchParameters` and render the InfiniteHits
+ */
 export default function ImageSearch({
   searchParameters,
 }: {
@@ -15,6 +17,7 @@ export default function ImageSearch({
     useImageSearch(searchParameters);
   const { ref, inView } = useInView({ threshold: 0.001 });
 
+  // when the div is in view (which mean the user has reached the bottom of the page) -> fetchNextPage
   useEffect(() => {
     if (!inView || isLastPage) return;
     fetchNextPage();
