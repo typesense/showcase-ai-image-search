@@ -24,11 +24,14 @@ export const POPULAR_KEYWORDS = [
   'galaxy',
   'moon',
   'neon',
+  'lake landscape',
+  'astronaut',
+  'house',
 ];
 
 export const EXAMPLE_SEARCH_TERMS = [
   'Autumn',
-  'House',
+  'City',
   'Dog',
   'Tree',
   'Portrait',
