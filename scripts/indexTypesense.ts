@@ -36,30 +36,6 @@ import diffusionDB from './data/20-images.json';
     name: 'DiffusionDB',
     fields: [
       {
-        name: 'image_name',
-        type: 'string',
-      },
-      {
-        name: 'prompt',
-        type: 'string',
-      },
-      {
-        name: 'seed',
-        type: 'string',
-      },
-      {
-        name: 'step',
-        type: 'string',
-      },
-      {
-        name: 'cfg',
-        type: 'auto',
-      },
-      {
-        name: 'sampler',
-        type: 'string',
-      },
-      {
         name: 'image',
         type: 'image',
         store: false,
