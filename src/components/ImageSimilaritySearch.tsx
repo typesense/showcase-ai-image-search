@@ -26,7 +26,7 @@ export default function ImageSimilaritySearch({
       </h3>
 
       <div
-        className='mb-12 h-[30vh] w-full cursor-pointer'
+        className='group relative mb-12 h-[calc(18vh+12vmax)] w-full cursor-pointer'
         onClick={() => setModalData(imageData)}
       >
         <Image
@@ -37,6 +37,7 @@ export default function ImageSimilaritySearch({
           sizes='80vw'
           alt={imageData.prompt}
         />
+        <div className='absolute inset-0 bg-dark-900 bg-opacity-0 transition group-hover:bg-opacity-40'></div>
       </div>
 
       <ImageSearch

@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <div className='mb-6'>
+      <section className='mb-6'>
         <Heading />
-      </div>
+      </section>
       <SearchBox showExampleSearchTerms />
-      <div className='mt-[6vmax]'>
+      <section className='mt-[6vmax]'>
         <ImageSearchUsingTextDescriptions />
-      </div>
+      </section>
     </>
   );
 }

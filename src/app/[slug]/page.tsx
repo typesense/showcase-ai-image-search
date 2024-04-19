@@ -23,9 +23,9 @@ export default async function ExploreSimilarImagesPage({
 
   return (
     <>
-      <div className='mb-6'>
+      <section className='mb-6'>
         <Heading />
-      </div>
+      </section>
       <SearchBox />
       {imageData && <ImageSimilaritySearch imageData={imageData} />}
     </>
