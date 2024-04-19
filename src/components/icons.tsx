@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
-type _svgProp = ComponentPropsWithoutRef<'svg'>;
+type _svgProps = ComponentPropsWithoutRef<'svg'>;
 
-export function GithubIcon({ ...svgProps }: _svgProp) {
+export function GithubIcon({ ...svgProps }: _svgProps) {
   return (
     <svg
       stroke='currentColor'
@@ -15,7 +15,7 @@ export function GithubIcon({ ...svgProps }: _svgProp) {
     </svg>
   );
 }
-export function ChevronRight({ ...svgProps }: _svgProp) {
+export function ChevronRight({ ...svgProps }: _svgProps) {
   return (
     <svg
       stroke='currentColor'
@@ -33,12 +33,12 @@ export function ChevronRight({ ...svgProps }: _svgProp) {
     </svg>
   );
 }
-export function SearchIcon({ ...svgProps }: _svgProp) {
+export function SearchIcon({ ...svgProps }: _svgProps) {
   return (
     <svg
       stroke='currentColor'
       fill='currentColor'
-      stroke-width='0'
+      strokeWidth='0'
       version='1.1'
       id='search'
       x='0px'
