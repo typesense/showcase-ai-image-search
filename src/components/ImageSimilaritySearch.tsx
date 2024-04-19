@@ -38,7 +38,7 @@ export default function ImageSimilaritySearch({
           sizes='80vw'
           alt={imageData.prompt}
         />
-        <div className='absolute inset-0 bg-dark-900 bg-opacity-0 transition group-hover:bg-opacity-40'></div>
+        <div className='pointer-events-none absolute inset-0 bg-dark-900 bg-opacity-0 transition group-hover:bg-opacity-40'></div>
       </div>
 
       <ImageSearch
