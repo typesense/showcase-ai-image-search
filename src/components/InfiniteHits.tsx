@@ -21,11 +21,12 @@ export default function InfiniteHits({ hits }: { hits: _hit[] }) {
         return (
           <li
             className='group relative animate-[fadeIn_1s_ease-out_forwards] cursor-pointer list-none overflow-hidden rounded-sm' // react-plock sometimes render one item multiple times
+            title='View similar images'
             key={document.id + idx}
           >
-            <Link href={`/${document.image_name}`}>
+            <Link href={`/${document.id}`}>
               <Image
-                src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? '/diffusiondb-20-images'}/${document.id}`}
+                src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? '/diffusiondb-20-images'}/${document.image_name}`}
                 width={0}
                 height={0}
                 sizes='20vw'

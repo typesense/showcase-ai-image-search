@@ -38,8 +38,8 @@ async function getImageData(slug: string) {
       .collections('DiffusionDB')
       .documents()
       .search({
-        q: slug,
-        query_by: 'image_name',
+        q: '*',
+        filter_by: `id:${slug}`, // using the `:` operator to improve performance since `id` doesn't contain spaces
         per_page: 1,
         exclude_fields: ['embedding', 'out_of'], // reduce ~98.5% of bytes transferred over network
       });
