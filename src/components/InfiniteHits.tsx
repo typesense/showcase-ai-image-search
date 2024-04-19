@@ -10,7 +10,6 @@ import { _hit } from '@/types/typesenseResponse';
 export default function InfiniteHits({ hits }: { hits: _hit[] }) {
   return (
     <Masonry
-      className='min-h-screen'
       items={hits}
       config={{
         columns: [2, 4, 5, 6],

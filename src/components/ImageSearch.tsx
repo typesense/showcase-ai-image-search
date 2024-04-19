@@ -13,7 +13,7 @@ export default function ImageSearch({
 }: {
   searchParameters: SearchParams;
 }) {
-  const { hits, fetchNextPage, isFetching, isLastPage } =
+  const { hits, fetchNextPage, isFetching, isLastPage, isNoResults } =
     useImageSearch(searchParameters);
   const { ref, inView } = useInView({ threshold: 0.001 });
 
@@ -23,22 +23,28 @@ export default function ImageSearch({
     fetchNextPage();
   }, [inView]);
 
+  const render = () => {
+    if (isNoResults) {
+      return <div className='font-mono text-sm'>No results were found.</div>;
+    } else if (isLastPage) {
+      return <div className='font-mono text-sm'>That's all!</div>;
+    } else
+      return (
+        <div
+          ref={ref}
+          className='pointer-events-none mt-[-5vmax] font-mono text-sm'
+        >
+          {isFetching && 'Loading...'}
+        </div>
+      );
+  };
   return (
     <>
       <section className='flex flex-col items-center gap-20'>
-        <div className='min-h-[120vh] w-full overflow-hidden rounded-xl'>
+        <div className='min-h-[40vh] w-full overflow-hidden rounded-xl'>
           <InfiniteHits hits={hits} />
         </div>
-        {isLastPage ? (
-          <div className='font-mono text-sm'>That's all!</div>
-        ) : (
-          <div
-            ref={ref}
-            className='pointer-events-none mt-[-5vmax] font-mono text-sm'
-          >
-            {isFetching && 'Loading...'}
-          </div>
-        )}
+        {render()}
       </section>
     </>
   );

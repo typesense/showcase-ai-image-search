@@ -11,6 +11,7 @@ export default function useImageSearch(searchParameters: SearchParams) {
   const [hits, setHits] = useState<any>([]);
   const [isFetching, setIsFetching] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
+  const [isNoResults, setIsNoResults] = useState(false);
 
   useEffect(() => {
     fetchNextPage();
@@ -27,8 +28,12 @@ export default function useImageSearch(searchParameters: SearchParams) {
           ...searchParameters,
           page: page.current,
         });
-      setIsLastPage(res.hits?.length ? false : true);
-      setHits((prev: _hit[]) => [...prev, ...(res.hits || [])]);
+      const isNoHitsReturned = res.hits?.length ? false : true;
+      setIsLastPage(isNoHitsReturned);
+      setHits((prev: _hit[]) => {
+        setIsNoResults(isNoHitsReturned && prev.length === 0 ? true : false);
+        return [...prev, ...(res.hits || [])];
+      });
     } catch (error) {
       alert('Sorry, there is an error fetching data!');
     } finally {
@@ -36,5 +41,5 @@ export default function useImageSearch(searchParameters: SearchParams) {
     }
   };
 
-  return { hits, fetchNextPage, isFetching, isLastPage };
+  return { hits, fetchNextPage, isFetching, isLastPage, isNoResults };
 }
