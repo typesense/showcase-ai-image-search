@@ -34,6 +34,7 @@ import diffusionDB from './data/20-images.json';
 
   await typesense.collections().create({
     name: 'DiffusionDB',
+    // there are additional fields in the data but they are display-only so we don't need to specify them
     fields: [
       {
         name: 'image',
