@@ -32,8 +32,6 @@ export const POPULAR_KEYWORDS = [
 export const EXAMPLE_SEARCH_TERMS = [
   'Autumn',
   'City',
-  'Dog',
-  'Tree',
   'Portrait',
   'Sea',
   'Robot',

@@ -27,6 +27,24 @@
     text-wrap: balance;
   }
 }
+@layer components {
+  @media not all and (hover: none) {
+    .scrollbar-style::-webkit-scrollbar {
+      height: 7px;
+    }
+
+    .scrollbar-style::-webkit-scrollbar-track {
+      @apply bg-dark-900;
+    }
+
+    .scrollbar-style::-webkit-scrollbar-thumb {
+      @apply rounded-sm bg-dark-500;
+    }
+    .scrollbar-style::-webkit-scrollbar-thumb:hover {
+      background: #343434;
+    }
+  }
+}
 html {
   scrollbar-gutter: stable both-edges;
 }
