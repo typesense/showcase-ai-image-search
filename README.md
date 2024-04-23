@@ -1,8 +1,9 @@
 <h1>
  🤖 AI Image Search, powered by Typesense
 </h1>
-This is a demo that showcase Typesense's Image Search feature which includes:
+This is a demo that showcase <a href="https://typesense.org/docs/26.0/api/image-search.html" target="_blank">Typesense's Image Search feature</a> which includes:
 
+<br />
 <br />
 
 - Search images using text descriptions of their contents
@@ -11,7 +12,7 @@ This is a demo that showcase Typesense's Image Search feature which includes:
 ## Tech Stack
 
 - <a href="https://github.com/typesense/typesense" target="_blank">Typesense</a>
-- NextJS
+- <a href="https://nextjs.org/" target="_blank">NextJS</a>
 - Typescript
 - Tailwind
 
@@ -71,7 +72,7 @@ npm run dev
 
 Open http://localhost:3000 to see the app ✌️
 
-## Deployment
+## Environment
 
 Set env variables to point the app to the Typesense Cluster
 
