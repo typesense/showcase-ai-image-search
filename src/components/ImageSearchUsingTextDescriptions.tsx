@@ -7,8 +7,9 @@ import { POPULAR_KEYWORDS } from '@/utils/CONSTANTS';
 
 const idx = random(0, POPULAR_KEYWORDS.length - 1);
 /*
- * This component make image searches with the query param value `?q=`
+ * This component make image searches with the URL query param `?q=`
  */
+
 export default function ImageSearchUsingTextDescriptions() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || POPULAR_KEYWORDS[idx];
@@ -20,7 +21,7 @@ export default function ImageSearchUsingTextDescriptions() {
         per_page: 25,
         exclude_fields: ['embedding', 'out_of'], // reduce ~98.5% of bytes transferred over network
       }}
-      key={query}
+      key={query} // unmount the old instance and mount new one when query changes
     />
   );
 }

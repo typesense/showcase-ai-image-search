@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ImageSearchUsingTextDescriptions from '@/components/ImageSearchUsingTextDescriptions';
 import SearchBox from '@/components/SearchBox';
 import Heading from '@/components/Heading';
+import WithSuspense from '../components/WithSuspense';
 
 export const metadata: Metadata = {
   title: 'AI Image Search | Typesense',
@@ -14,9 +15,15 @@ export default function Home() {
       <section className='mb-6'>
         <Heading />
       </section>
-      <SearchBox showExampleSearchTerms />
+
+      <WithSuspense>
+        <SearchBox showExampleSearchTerms />
+      </WithSuspense>
+
       <section className='mt-[6vmax]'>
-        <ImageSearchUsingTextDescriptions />
+        <WithSuspense>
+          <ImageSearchUsingTextDescriptions />
+        </WithSuspense>
       </section>
     </>
   );

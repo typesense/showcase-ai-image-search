@@ -58,7 +58,7 @@ export default function SearchBox({
               {idx < EXAMPLE_SEARCH_TERMS.length - 1 && ','}
             </Link>
           ))}{' '}
-          and select any image for similarity search
+          and select any image for similarity search.
         </div>
       )}
     </>
