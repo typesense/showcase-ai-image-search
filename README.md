@@ -71,7 +71,7 @@ npm run dev
 
 Open http://localhost:3000 to see the app ✌️
 
-## Deployment
+## Environment
 
 Set env variables to point the app to the Typesense Cluster
 
