@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import Modal from './Modal';
 
 /*
- * This component searchs for images using typesense document id
+ * This component searches for images using typesense document id
  */
 export default function ImageSimilaritySearch({
   imageData,

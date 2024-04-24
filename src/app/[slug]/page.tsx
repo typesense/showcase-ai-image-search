@@ -1,25 +1,25 @@
+'use client';
 import Heading from '@/components/Heading';
 import ImageSimilaritySearch from '@/components/ImageSimilaritySearch';
 import SearchBox from '@/components/SearchBox';
 import { typesense } from '@/lib/typesense';
 import { _documentSchema } from '@/types/typesenseResponse';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Explore | Typesense',
-  description:
-    "Explore similar images, using Typesense's image similarity search.",
-};
+import { useEffect, useState } from 'react';
 
 /*
  * This fetch the data from typesense server using dynamic page `slug` and pass it to `ImageSimilaritySearch` component
+ * Since axios (typesense-js) does not work in edge runtime, we have to fetch data in client side
  */
-export default async function ExploreSimilarImagesPage({
+export default function ExploreSimilarImagesPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const imageData = await getImageData(params.slug);
+  const [imageData, setImageData] = useState<_documentSchema>();
+
+  useEffect(() => {
+    (async () => setImageData(await getImageData(params.slug)))();
+  }, []);
 
   return (
     <>
@@ -48,5 +48,3 @@ async function getImageData(slug: string) {
     throw new Error('Failed to fetch data');
   }
 }
-
-export const runtime = 'edge';
