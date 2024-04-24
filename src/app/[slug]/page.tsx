@@ -48,3 +48,5 @@ async function getImageData(slug: string) {
     throw new Error('Failed to fetch data');
   }
 }
+
+export const runtime = 'edge';
