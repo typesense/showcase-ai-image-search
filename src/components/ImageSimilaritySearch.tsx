@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import Modal from './Modal';
 
 /*
- * This component searchs for images using typesense document id
+ * This component searches for images using typesense document id
  */
 export default function ImageSimilaritySearch({
   imageData,
@@ -38,7 +38,9 @@ export default function ImageSimilaritySearch({
           sizes='80vw'
           alt={imageData.prompt}
         />
-        <div className='pointer-events-none absolute inset-0 bg-dark-900 bg-opacity-0 transition group-hover:bg-opacity-40'></div>
+        <div className='pointer-events-none absolute inset-0 flex items-end justify-center bg-dark-900 bg-opacity-40 opacity-0 transition group-hover:opacity-100'>
+          <div className='mb-4 font-mono text-xs font-medium'>View more</div>
+        </div>
       </div>
 
       <ImageSearch
