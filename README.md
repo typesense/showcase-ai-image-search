@@ -74,7 +74,7 @@ Open http://localhost:3000 to see the app ✌️
 
 ## Environment
 
-Set env variables to point the app to the Typesense Cluster
+Set env variables in `.env` file to point the app to the Typesense Cluster
 
 ```env
 NEXT_PUBLIC_TYPESENSE_SEARCH_ONLY_API_KEY=xxx
