@@ -16,7 +16,7 @@
     "react-dom": "^18",
     "react-intersection-observer": "^9.8.1",
     "react-plock": "^3.1.0",
-    "typesense": "^1.8.2"
+    "typesense": "^1.9.0-2"
   },
   "devDependencies": {
     "@types/node": "^20",
