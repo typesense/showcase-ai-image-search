@@ -1,6 +1,7 @@
 import Typesense from 'typesense';
 import 'dotenv/config';
-import diffusionDB from './data/20-images.json';
+import fs from 'fs';
+import readline from 'readline';
 
 (async () => {
   console.log('Connecting to typesense server...');
@@ -54,19 +55,41 @@ import diffusionDB from './data/20-images.json';
     ],
   });
 
-  console.log('Indexing diffusionDB test 20 images');
-  await indexData(diffusionDB);
+  console.log('Indexing diffusionDB images');
+  await indexData(process.env.DIFFUSION_DB_JSONL_FILE || './data/20-images.jsonl');
 
-  async function indexData(data: any) {
+  async function indexData(filename: string) {
+    const fileStream = fs.createReadStream(filename);
+    const rl = readline.createInterface({
+      input: fileStream,
+      crlfDelay: Infinity,
+    });
+
+    let batch = [];
+    let batchNumber = 0;
+
+    for await (const line of rl) {
+      if (line.trim()) {
+        batch.push(JSON.parse(line));
+        if (batch.length >= (parseInt(process.env.INDEXING_BATCH_SIZE || '100'))) {
+          console.log(`Indexing batch ${++batchNumber}`);
+          await indexBatch(batch);
+          batch = []; // Reset the batch after processing
+        }
+      }
+    }
+    if (batch.length > 0) {
+      console.log(`Indexing batch ${++batchNumber}`);
+      await indexBatch(batch);
+    }
+  }
+
+  async function indexBatch(batch: any[]) {
     try {
-      const returnData = await typesense
-        .collections('DiffusionDB')
-        .documents()
-        .import(data);
-
+      const returnData = await typesense.collections('DiffusionDB').documents().import(batch);
       console.log('Return data: ', returnData);
     } catch (error) {
-      console.log(error);
+      console.error('Batch import error:', error);
     }
   }
 })();
