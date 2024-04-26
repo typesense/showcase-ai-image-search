@@ -33,6 +33,6 @@ export const EXAMPLE_SEARCH_TERMS = [
   'Autumn',
   'City',
   'Portrait',
-  'Sea',
+  'Space',
   'Robot',
 ];
