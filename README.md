@@ -9,7 +9,7 @@ This is a demo that showcase <a href="https://typesense.org/docs/26.0/api/image-
 - Search images using text descriptions of their contents
 - Image Similarity search
 
-Live Demo: [ai-image-search.typesense.org](https://ai-image-search.typesense.org)
+🌇 🔍 Live Demo: [ai-image-search.typesense.org](https://ai-image-search.typesense.org)
 
 ## Tech Stack
 
