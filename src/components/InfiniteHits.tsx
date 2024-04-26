@@ -26,7 +26,7 @@ export default function InfiniteHits({ hits }: { hits: _hit[] }) {
           >
             <Link href={`/${document.id}`}>
               <Image
-                src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? '/diffusiondb-20-images'}/${document.image_name}`}
+                src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? 'https://ai-image-search-images.typesense.org'}/${document.image_name}`}
                 width={0}
                 height={0}
                 sizes='20vw'

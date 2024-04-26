@@ -32,7 +32,7 @@ export default function ImageSimilaritySearch({
       >
         <Image
           className='h-full w-full object-contain'
-          src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? '/diffusiondb-20-images'}/${imageData.image_name}`}
+          src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? 'https://ai-image-search-images.typesense.org'}/${imageData.image_name}`}
           width={0}
           height={0}
           sizes='80vw'
