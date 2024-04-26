@@ -58,6 +58,14 @@ Start typesense server
 npm run start:typesense # or: docker compose up
 ```
 
+Download sample data:
+
+```shell
+# From the root of the repo:
+
+curl -o ./scripts/data/20-images.jsonl https://ai-image-search-images.typesense.org/20-images.jsonl
+```
+
 Index data into typesense
 
 ```shell
