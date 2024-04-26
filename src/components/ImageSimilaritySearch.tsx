@@ -47,7 +47,7 @@ export default function ImageSimilaritySearch({
         searchParameters={{
           q: '*',
           per_page: 25,
-          vector_query: `embedding:([], id:${imageData.id})`,
+          vector_query: `embedding:([], id:${imageData.id}, distance_threshold: 0.8, k: 100)`,
           exclude_fields: ['embedding', 'out_of'], // reduce ~98.5% of bytes transferred over network
         }}
       />
