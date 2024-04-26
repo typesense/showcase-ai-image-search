@@ -30,9 +30,11 @@ export const POPULAR_KEYWORDS = [
 ];
 
 export const EXAMPLE_SEARCH_TERMS = [
+  'Green',
   'Autumn',
   'City',
   'Portrait',
   'Space',
   'Robot',
+  'Lion'
 ];
