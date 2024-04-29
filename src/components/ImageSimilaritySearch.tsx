@@ -37,6 +37,7 @@ export default function ImageSimilaritySearch({
           height={0}
           sizes='80vw'
           alt={imageData.prompt}
+          unoptimized
         />
         <div className='pointer-events-none absolute inset-0 flex items-end justify-center bg-dark-900 bg-opacity-40 opacity-0 transition group-hover:opacity-100'>
           <div className='mb-4 font-mono text-xs font-medium'>View more</div>
