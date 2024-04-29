@@ -25,16 +25,16 @@ export default function ImageSearch({
 
   const render = () => {
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <div className='mt-10'>Loading...</div>;
     } else if (isNoResults) {
       return <div>No results were found.</div>;
     } else if (isLastPage) {
-      return <div>That's all!</div>;
+      return <div className='mt-20'>That's all!</div>;
     } else
       return <div ref={ref} className='pointer-events-none mt-[-5vmax]'></div>;
   };
   return (
-    <section className='flex flex-col items-center gap-20'>
+    <section className='flex flex-col items-center'>
       <div className='w-full overflow-hidden rounded-xl'>
         <InfiniteHits hits={hits} />
       </div>
