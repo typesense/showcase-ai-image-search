@@ -32,6 +32,7 @@ export default function InfiniteHits({ hits }: { hits: _hit[] }) {
                 sizes='20vw'
                 style={{ width: '100%', height: 'auto' }}
                 alt={document.prompt}
+                unoptimized
               />
               <div className='absolute inset-0 flex items-end bg-gradient-to-b  from-[#fff0] to-[black] p-2 opacity-0 transition group-hover:opacity-100'>
                 <span className='line-clamp-3 font-mono text-xs font-medium'>

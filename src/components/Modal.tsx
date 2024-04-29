@@ -21,6 +21,7 @@ export default function Modal({ imageData, handleClose }: _props) {
             height={0}
             sizes='80vw'
             alt={imageData.prompt}
+            unoptimized
           />
         </div>
         <div className='flex h-max flex-col gap-8 px-5 py-8 lg:flex-1 [&_p]:font-mono [&_p]:text-sm [&_span]:mb-2 [&_span]:block [&_span]:text-xs [&_span]:font-bold [&_span]:text-white-300'>
