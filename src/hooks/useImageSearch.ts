@@ -9,7 +9,7 @@ import { SearchParams } from 'typesense/lib/Typesense/Documents';
 export default function useImageSearch(searchParameters: SearchParams) {
   const page = useRef(0);
   const [hits, setHits] = useState<any>([]);
-  const [isFetching, setIsFetching] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
   const [isNoResults, setIsNoResults] = useState(false);
 
@@ -18,7 +18,7 @@ export default function useImageSearch(searchParameters: SearchParams) {
   }, []);
 
   const fetchNextPage = async () => {
-    setIsFetching(true);
+    setIsLoading(true);
     page.current++;
     try {
       const res = await typesense
@@ -37,9 +37,9 @@ export default function useImageSearch(searchParameters: SearchParams) {
     } catch (error) {
       alert('Sorry, there is an error fetching data!');
     } finally {
-      setIsFetching(false);
+      setIsLoading(false);
     }
   };
 
-  return { hits, fetchNextPage, isFetching, isLastPage, isNoResults };
+  return { hits, fetchNextPage, isLoading, isLastPage, isNoResults };
 }

@@ -13,7 +13,7 @@ export default function ImageSearch({
 }: {
   searchParameters: SearchParams;
 }) {
-  const { hits, fetchNextPage, isFetching, isLastPage, isNoResults } =
+  const { hits, fetchNextPage, isLoading, isLastPage, isNoResults } =
     useImageSearch(searchParameters);
   const { ref, inView } = useInView({ threshold: 0.001 });
 
@@ -24,28 +24,21 @@ export default function ImageSearch({
   }, [inView]);
 
   const render = () => {
-    if (isNoResults) {
-      return <div className='font-mono text-sm'>No results were found.</div>;
+    if (isLoading) {
+      return <div>Loading...</div>;
+    } else if (isNoResults) {
+      return <div>No results were found.</div>;
     } else if (isLastPage) {
-      return <div className='font-mono text-sm'>That's all!</div>;
+      return <div>That's all!</div>;
     } else
-      return (
-        <div
-          ref={ref}
-          className='pointer-events-none mt-[-5vmax] font-mono text-sm'
-        >
-          {isFetching && 'Loading...'}
-        </div>
-      );
+      return <div ref={ref} className='pointer-events-none mt-[-5vmax]'></div>;
   };
   return (
-    <>
-      <section className='flex flex-col items-center gap-20'>
-        <div className='min-h-[40vh] w-full overflow-hidden rounded-xl'>
-          <InfiniteHits hits={hits} />
-        </div>
-        {render()}
-      </section>
-    </>
+    <section className='flex flex-col items-center gap-20'>
+      <div className='w-full overflow-hidden rounded-xl'>
+        <InfiniteHits hits={hits} />
+      </div>
+      <div className='font-mono text-sm'>{render()}</div>
+    </section>
   );
 }
