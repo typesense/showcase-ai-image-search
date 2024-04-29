@@ -44,7 +44,8 @@ export default function SearchBox({
       </form>
       {showExampleSearchTerms && (
         <div className='scrollbar-style m-auto mt-2 flex w-[max(calc(41vw+10rem),350px)] max-w-[95vw] gap-1 overflow-x-auto text-nowrap font-mono text-xs text-white-400 md:max-lg:w-[max(calc(35vw+16rem),350px)]'>
-          <span>Try:</span>{' '}
+          <span>Select an image below for Similarity Search or </span>
+          <span>try typing:</span>{' '}
           {EXAMPLE_SEARCH_TERMS.map((item, idx) => (
             <Link
               className='group'
@@ -58,7 +59,6 @@ export default function SearchBox({
               {idx < EXAMPLE_SEARCH_TERMS.length - 1 && ','}
             </Link>
           ))}{' '}
-          and select any image for similarity search.
         </div>
       )}
     </>

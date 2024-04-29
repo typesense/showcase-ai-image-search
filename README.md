@@ -9,6 +9,8 @@ This is a demo that showcase <a href="https://typesense.org/docs/26.0/api/image-
 - Search images using text descriptions of their contents
 - Image Similarity search
 
+🌇 🔍 Live Demo: [ai-image-search.typesense.org](https://ai-image-search.typesense.org)
+
 ## Tech Stack
 
 - <a href="https://github.com/typesense/typesense" target="_blank">Typesense</a>
@@ -56,6 +58,14 @@ Start typesense server
 
 ```shell
 npm run start:typesense # or: docker compose up
+```
+
+Download sample data:
+
+```shell
+# From the root of the repo:
+
+curl -o ./scripts/data/20-images.jsonl https://ai-image-search-images.typesense.org/20-images.jsonl
 ```
 
 Index data into typesense

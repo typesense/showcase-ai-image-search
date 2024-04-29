@@ -32,7 +32,7 @@ export default function ImageSimilaritySearch({
       >
         <Image
           className='h-full w-full object-contain'
-          src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? '/diffusiondb-20-images'}/${imageData.image_name}`}
+          src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? 'https://ai-image-search-images.typesense.org'}/${imageData.image_name}`}
           width={0}
           height={0}
           sizes='80vw'
@@ -48,7 +48,7 @@ export default function ImageSimilaritySearch({
         searchParameters={{
           q: '*',
           per_page: 25,
-          vector_query: `embedding:([], id:${imageData.id})`,
+          vector_query: `embedding:([], id:${imageData.id}, distance_threshold: 0.8, k: 100)`,
           exclude_fields: ['embedding', 'out_of'], // reduce ~98.5% of bytes transferred over network
         }}
       />
