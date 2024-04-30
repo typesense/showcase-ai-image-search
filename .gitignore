@@ -38,4 +38,4 @@ next-env.d.ts
 /typesense-data
 .env
 
-scripts/data/20-images.jsonl
+scripts/data/*.jsonl
