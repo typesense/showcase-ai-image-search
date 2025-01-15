@@ -4,17 +4,16 @@ import ImageSimilaritySearch from '@/components/ImageSimilaritySearch';
 import SearchBox from '@/components/SearchBox';
 import { typesense } from '@/lib/typesense';
 import { _documentSchema } from '@/types/typesenseResponse';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 
 /*
  * This fetch the data from typesense server using dynamic page `slug` and pass it to `ImageSimilaritySearch` component
  * Since axios (typesense-js) does not work in edge runtime, we have to fetch data in client side
  */
-export default function ExploreSimilarImagesPage({
-  params,
-}: {
-  params: { slug: string };
+export default function ExploreSimilarImagesPage(props: {
+  params: Promise<{ slug: string }>;
 }) {
+  const params = use(props.params);
   const [imageData, setImageData] = useState<_documentSchema>();
 
   useEffect(() => {
