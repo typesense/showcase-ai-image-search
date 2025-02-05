@@ -19,9 +19,9 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "target": "ES2017"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  // disable types check in `script` folder when building
-  "exclude": ["node_modules", "scripts"]
+  "exclude": ["node_modules"]
 }
