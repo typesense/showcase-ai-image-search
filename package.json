@@ -11,7 +11,7 @@
     "index:typesense": "npx tsx ./scripts/indexTypesense.ts"
   },
   "dependencies": {
-    "next": "^15.1.4",
+    "next": "^15.1.9",
     "react": "^18",
     "react-dom": "^18",
     "react-intersection-observer": "^9.15.0",
